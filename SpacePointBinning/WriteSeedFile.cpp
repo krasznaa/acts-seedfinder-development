@@ -16,7 +16,7 @@ void writeSeedFile( Acts::Neighborhood< TestSpacePoint > spacepoints,
    auto end = spacepoints.end();
    for( ; itr != end; ++itr ) {
       auto* sp = *itr;
-      ofile << sp->x() << ", " << sp->y() << ", " << sp->z() << std::endl;
+      ofile << sp->x() << " " << sp->y() << " " << sp->z() << std::endl;
    }
    return;
 }
