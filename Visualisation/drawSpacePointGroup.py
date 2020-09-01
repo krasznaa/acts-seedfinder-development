@@ -59,8 +59,8 @@ plot.scatter( bottomSPs[ 0 ], bottomSPs[ 1 ], bottomSPs[ 2 ],
               c = 'b', marker = 'o' )
 plot.scatter( middleSPs[ 0 ], middleSPs[ 1 ], middleSPs[ 2 ],
               c = 'g', marker = 'o' )
-#plot.scatter( topSPs[ 0 ], topSPs[ 1 ], topSPs[ 2 ],
-#              c = 'r', marker = 'o' )
+plot.scatter( topSPs[ 0 ], topSPs[ 1 ], topSPs[ 2 ],
+              c = 'r', marker = 'o' )
 plot.set_xlabel( 'X' )
 plot.set_ylabel( 'Y' )
 plot.set_zlabel( 'Z' )
