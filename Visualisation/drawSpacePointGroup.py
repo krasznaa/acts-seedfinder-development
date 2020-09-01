@@ -32,7 +32,9 @@ def readSpacePointFile( inputFile ):
    with open( inputFile, 'r' ) as csvFile:
       spReader = csv.reader( csvFile, delimiter = ' ' )
       for row in spReader:
-         if row[ 0 ] == 'lxyz':
+         if row[ 0 ] == '#':
+            continue
+         elif row[ 0 ] == 'lxyz':
             x += [ float( row[ 2 ] ) ]
             y += [ float( row[ 3 ] ) ]
             z += [ float( row[ 4 ] ) ]

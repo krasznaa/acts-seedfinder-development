@@ -22,7 +22,9 @@ z = []
 with open( args.inputFile, 'r' ) as csvfile:
    spReader = csv.reader( csvfile, delimiter = ' ' )
    for row in spReader:
-      if row[ 0 ] == 'lxyz':
+      if row[ 0 ] == '#':
+         continue
+      elif row[ 0 ] == 'lxyz':
          x += [ float( row[ 2 ] ) ]
          y += [ float( row[ 3 ] ) ]
          z += [ float( row[ 4 ] ) ]
@@ -39,8 +41,8 @@ print( 'Read in %i spacepoints' % len( x ) )
 # Create a 3D scatter plot of the spacepoints.
 fig = plt.figure()
 plot = fig.add_subplot( 111, projection = '3d' )
-plot.scatter( x, y, z, c = 'r', marker = 'o' )
-plot.set_xlabel( 'X' )
-plot.set_ylabel( 'Y' )
-plot.set_zlabel( 'Z' )
+plot.scatter( z, x, y, c = 'r', marker = 'o' )
+plot.set_xlabel( 'Z' )
+plot.set_ylabel( 'X' )
+plot.set_zlabel( 'Y' )
 plt.show()
