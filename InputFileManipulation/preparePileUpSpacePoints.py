@@ -47,6 +47,9 @@ def main():
                         help = 'Seed for the random number generator' )
    args = parser.parse_args()
 
+   # Tell the user what's happening.
+   print( 'Creating file: %s' % args.outputFile )
+
    # Set up the random number generator(s).
    random.seed( args.randomSeed )
 
