@@ -5,6 +5,7 @@
 #
 
 # Prepare the PU=20 files.
+mkdir -p /data/projects/acts/atlas_seeds/pu20
 for i in $(seq 1 100);
 do
    ./preparePileUpSpacePoints.py \
@@ -17,6 +18,7 @@ do
 done
 
 # Prepare the PU=40 files.
+mkdir -p /data/projects/acts/atlas_seeds/pu40
 for i in $(seq 1 100);
 do
    ./preparePileUpSpacePoints.py \
@@ -29,6 +31,7 @@ do
 done
 
 # Prepare the PU=60 files.
+mkdir -p /data/projects/acts/atlas_seeds/pu60
 for i in $(seq 1 100);
 do
    ./preparePileUpSpacePoints.py \
@@ -41,6 +44,7 @@ do
 done
 
 # Prepare the PU=80 files.
+mkdir -p /data/projects/acts/atlas_seeds/pu80
 for i in $(seq 1 100);
 do
    ./preparePileUpSpacePoints.py \
@@ -53,6 +57,7 @@ do
 done
 
 # Prepare the PU=100 files.
+mkdir -p /data/projects/acts/atlas_seeds/pu100
 for i in $(seq 1 100);
 do
    ./preparePileUpSpacePoints.py \
@@ -65,6 +70,7 @@ do
 done
 
 # Prepare the PU=150 files.
+mkdir -p /data/projects/acts/atlas_seeds/pu150
 for i in $(seq 1 100);
 do
    ./preparePileUpSpacePoints.py \
@@ -77,6 +83,7 @@ do
 done
 
 # Prepare the PU=200 files.
+mkdir -p /data/projects/acts/atlas_seeds/pu200
 for i in $(seq 1 100);
 do
    ./preparePileUpSpacePoints.py \
