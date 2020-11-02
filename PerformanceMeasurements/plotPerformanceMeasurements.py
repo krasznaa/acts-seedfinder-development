@@ -51,16 +51,16 @@ def main():
                             20, 0.0, 200000.0 )
    cpuTime.SetLabelSize( 0.0, "x" )
    cpuTime.SetTitleSize( 0.0, "x" )
-   cpuTime.SetLabelSize( 0.03, "y" )
-   cpuTime.SetTitleSize( 0.03, "y" )
-   cpuTime.SetTitleOffset( 1.0, "y" )
+   cpuTime.SetLabelSize( 0.06, "y" )
+   cpuTime.SetTitleSize( 0.06, "y" )
+   cpuTime.SetTitleOffset( 0.6, "y" )
    cpuTime.SetMarkerStyle( ROOT.kCircle )
    cpuTime.SetMarkerColor( ROOT.kBlack )
    cpuTime.SetMarkerSize( 2 )
    cpuTime.SetLineWidth( 3 )
    cpuTime.SetLineColor( ROOT.kBlack )
    fillProfile( cpuTime, args.igpuResults, 3, 0 )
-   cpuTime.GetYaxis().SetRangeUser( 0.001, 23.0 )
+   cpuTime.GetYaxis().SetRangeUser( 0.001, 18.0 )
 
    # Create a profile of the iGPU's runtime results.
    igpuTime = ROOT.TProfile( 'igpuTime', ';;Runtime [s]',
@@ -83,7 +83,7 @@ def main():
    fillProfile( gpuTime, args.gpuResults, 3, 1 )
 
    # Create a profile of the iGPU / CPU ratio.
-   igpuRatio = ROOT.TProfile( 'igpuRatio', ';Spacepoints;Runtime Ratio',
+   igpuRatio = ROOT.TProfile( 'igpuRatio', ';Seeds;Runtime Ratio',
                               20, 0.0, 200000.0 )
    igpuRatio.SetMarkerStyle( ROOT.kFullCircle )
    igpuRatio.SetMarkerColor( ROOT.kBlue )
@@ -93,33 +93,36 @@ def main():
    fillProfile( igpuRatio, args.igpuResults, 3, 2 )
 
    # Create a profile of the GPU / CPU ratio.
-   gpuRatio = ROOT.TProfile( 'gpuRatio', ';Spacepoints;Runtime Ratio',
+   gpuRatio = ROOT.TProfile( 'gpuRatio', ';Seeds;Runtime Ratio',
                              20, 0.0, 200000.0 )
-   gpuRatio.SetLabelSize( 0.06, "x" )
-   gpuRatio.SetTitleSize( 0.06, "x" )
-   gpuRatio.SetLabelSize( 0.06, "y" )
-   gpuRatio.SetTitleSize( 0.06, "y" )
-   gpuRatio.SetTitleOffset( 0.5, "y" )
+   gpuRatio.SetLabelSize( 0.12, "x" )
+   gpuRatio.SetTitleSize( 0.12, "x" )
+   gpuRatio.SetLabelSize( 0.12, "y" )
+   gpuRatio.SetTitleSize( 0.12, "y" )
+   gpuRatio.SetTitleOffset( 0.3, "y" )
    gpuRatio.SetMarkerStyle( ROOT.kFullTriangleUp )
    gpuRatio.SetMarkerColor( ROOT.kGreen )
    gpuRatio.SetMarkerSize( 2 )
    gpuRatio.SetLineWidth( 3 )
    gpuRatio.SetLineColor( ROOT.kGreen )
    fillProfile( gpuRatio, args.gpuResults, 3, 2 )
-   gpuRatio.GetYaxis().SetRangeUser( 0.0, 2.9 )
+   gpuRatio.GetYaxis().SetRangeUser( 0.0, 8.4 )
+   gpuRatio.GetYaxis().SetNdivisions( 505 )
 
    # Set up a canvas to draw on.
    canvas = ROOT.TCanvas( 'canvas', 'Canvas', 1400, 1200 )
    canvas.cd()
    topPad = ROOT.TPad( 'topPad', 'Absolute values pad',
                        0.0, 0.333, 1.0, 1.0 )
-   topPad.SetTopMargin( 0.02 )
+   topPad.SetTopMargin( 0.03 )
    topPad.SetBottomMargin( 0.0 )
+   topPad.SetRightMargin( 0.08 )
    topPad.Draw()
    bottomPad = ROOT.TPad( 'bottomPad', 'Relative values pad',
                           0.0, 0.0, 1.0, 0.333 )
    bottomPad.SetTopMargin( 0.0 )
-   bottomPad.SetBottomMargin( 0.15 )
+   bottomPad.SetBottomMargin( 0.3 )
+   bottomPad.SetRightMargin( 0.08 )
    bottomPad.Draw()
 
    # A helper object for drawing (a) line(s).
@@ -141,10 +144,10 @@ def main():
 
    # Add a legend on top of it all.
    topPad.cd()
-   legend = ROOT.TLegend( 0.15, 0.7, 0.6, 0.9 )
-   legend.AddEntry( cpuTime, 'Intel(R) Core(TM) i7-6700 CPU (original C++)' )
-   legend.AddEntry( igpuTime, 'Intel(R) Gen9 HD Graphics NEO' )
-   legend.AddEntry( gpuTime, 'NVidia GeForce GTX 960' )
+   legend = ROOT.TLegend( 0.1, 0.7, 0.75, 0.95 )
+   legend.AddEntry( cpuTime, 'Intel^{#oright} Core#trademark i9-9900K CPU (original C++)' )
+   legend.AddEntry( igpuTime, 'Intel^{#oright} Gen9 HD Graphics NEO' )
+   legend.AddEntry( gpuTime, 'NVIDIA GeForce RTX 2060' )
    legend.Draw()
 
    # Save the plot.
