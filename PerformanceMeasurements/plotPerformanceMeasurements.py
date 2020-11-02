@@ -60,7 +60,7 @@ def main():
    cpuTime.SetLineWidth( 3 )
    cpuTime.SetLineColor( ROOT.kBlack )
    fillProfile( cpuTime, args.igpuResults, 3, 0 )
-   cpuTime.GetYaxis().SetRangeUser( 0.001, 18.0 )
+   cpuTime.GetYaxis().SetRangeUser( 0.001, 23.0 )
 
    # Create a profile of the iGPU's runtime results.
    igpuTime = ROOT.TProfile( 'igpuTime', ';;Runtime [s]',
@@ -106,8 +106,8 @@ def main():
    gpuRatio.SetLineWidth( 3 )
    gpuRatio.SetLineColor( ROOT.kGreen )
    fillProfile( gpuRatio, args.gpuResults, 3, 2 )
-   gpuRatio.GetYaxis().SetRangeUser( 0.0, 8.4 )
-   gpuRatio.GetYaxis().SetNdivisions( 505 )
+   gpuRatio.GetYaxis().SetRangeUser( 0.0, 2.9 )
+   gpuRatio.GetYaxis().SetNdivisions( 504 )
 
    # Set up a canvas to draw on.
    canvas = ROOT.TCanvas( 'canvas', 'Canvas', 1400, 1200 )
@@ -145,9 +145,9 @@ def main():
    # Add a legend on top of it all.
    topPad.cd()
    legend = ROOT.TLegend( 0.1, 0.7, 0.75, 0.95 )
-   legend.AddEntry( cpuTime, 'Intel^{#oright} Core#trademark i9-9900K CPU (original C++)' )
+   legend.AddEntry( cpuTime, 'Intel^{#oright} Core#trademark i7-6700 CPU (original C++)' )
    legend.AddEntry( igpuTime, 'Intel^{#oright} Gen9 HD Graphics NEO' )
-   legend.AddEntry( gpuTime, 'NVIDIA GeForce RTX 2060' )
+   legend.AddEntry( gpuTime, 'NVIDIA GeForce GTX 960' )
    legend.Draw()
 
    # Save the plot.
